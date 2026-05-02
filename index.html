@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Expense &amp; Budget Visualizer</title>
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Expense &amp; Budget Visualizer</h1>
+      <button id="theme-toggle">🌙 Dark Mode</button>
+    </header>
+
+    <main>
+      <!-- Balance -->
+      <section id="balance-section">
+        <span id="balance-display">$0.00</span>
+      </section>
+
+      <!-- Transaction Input Form -->
+      <section id="input-section">
+        <h2>Add Transaction</h2>
+        <form id="transaction-form">
+          <input id="item-name" type="text" placeholder="Item name" />
+          <input id="item-amount" type="number" min="0.01" step="0.01" placeholder="Amount" />
+          <select id="item-category"></select>
+          <button type="submit">Add Transaction</button>
+          <p id="form-error" class="error-msg" aria-live="polite"></p>
+        </form>
+      </section>
+
+      <!-- Category Management -->
+      <section id="category-section">
+        <h2>Categories</h2>
+        <input id="new-category-name" type="text" placeholder="New category name" />
+        <button id="add-category-btn">Add Category</button>
+        <p id="category-error" class="error-msg" aria-live="polite"></p>
+      </section>
+
+      <!-- Spending Limits -->
+      <section id="limits-section">
+        <h2>Spending Limits</h2>
+        <div id="limits-list"></div>
+      </section>
+
+      <!-- Sort Controls -->
+      <div id="sort-controls">
+        <label for="sort-select">Sort by:</label>
+        <select id="sort-select">
+          <option value="insertion">Default (insertion order)</option>
+          <option value="amount-asc">Amount ↑</option>
+          <option value="amount-desc">Amount ↓</option>
+          <option value="category-asc">Category A–Z</option>
+        </select>
+      </div>
+
+      <!-- Transaction List -->
+      <section id="transaction-list-section">
+        <h2>Transactions</h2>
+        <ul id="transaction-list"></ul>
+        <p id="empty-state-msg" class="empty-state">No transactions yet.</p>
+      </section>
+
+      <!-- Pie Chart -->
+      <section id="chart-section">
+        <h2>Spending by Category</h2>
+        <canvas id="spending-chart"></canvas>
+        <p id="chart-empty-msg" class="empty-state">Add transactions to see the chart.</p>
+      </section>
+
+      <!-- Monthly Summary -->
+      <section id="summary-section">
+        <h2>Monthly Summary</h2>
+        <div id="summary-content"></div>
+        <p id="summary-empty-msg" class="empty-state">No transactions yet.</p>
+      </section>
+    </main>
+
+    <!-- Local Storage warning (non-blocking) -->
+    <div id="storage-warning" class="warning-banner" hidden>
+      ⚠️ Local Storage is unavailable. Your data will not be saved.
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4/dist/chart.umd.min.js"></script>
+    <script src="js/app.js" defer></script>
+  </body>
+</html>
